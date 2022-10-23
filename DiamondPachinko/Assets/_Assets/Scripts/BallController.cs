@@ -73,16 +73,22 @@ public class BallController : MonoBehaviour
         }
         else
         {
+            gameObject.SetActive(false);
             callback?.Invoke();
         }
     }
 
     public void ManageHealth()
     {
-        if (hearts >= 0)
+        if (hearts > 0)
         {
             heartSprites[hearts-1].gameObject.SetActive(false);
             hearts--;
+        }
+        else
+        {
+            hearts = 0;
+            heartSprites[hearts].gameObject.SetActive(false);
         }
     }
 }
